@@ -13,7 +13,11 @@
     <label>Name: </label> <input type="text" id="txtName" />
     <button id="btnName">Click Me</button>
     <br>
-    <p><button class="share-btn">Share MDN!</button></p>
+    <p><button class="share-btn" style="
+        width: 400px;
+        height: 200px;
+        font-size: 46px;
+    ">Share!</button></p>
     <p class="result"></p>
     <br>
     <label id="message" style="color:green"></label>
@@ -24,7 +28,7 @@
             const shareData = {
                 title: 'Tagidoo.li',
                 text: 'Get a friendly feedback !',
-                url: 'https://developer.mozilla.org'
+                url: 'https://gray-field-033fe9e03.1.azurestaticapps.net/initCartPage'
             }
 
             const btn = document.querySelector('.share-btn');
