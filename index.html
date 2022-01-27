@@ -12,9 +12,38 @@
     <h3> Azure function</h3>
     <label>Name: </label> <input type="text" id="txtName" />
     <button id="btnName">Click Me</button>
+    <br>
+    <p><button class="share-btn">Share MDN!</button></p>
+    <p class="result"></p>
+    <br>
     <label id="message" style="color:green"></label>
     <script>
         $(document).ready(function () {
+
+
+            const shareData = {
+                title: 'Tagidoo.li',
+                text: 'Get a friendly feedback !',
+                url: 'https://developer.mozilla.org'
+            }
+
+            const btn = document.querySelector('.share-btn');
+            const resultPara = document.querySelector('.result');
+
+            btn.addEventListener('click', async () => {
+                try {
+                    await navigator.share(shareData)
+                    resultPara.textContent = 'Shared successfully';
+                    console.log('Shared successfully');
+                } catch (err) {
+                    resultPara.textContent = 'Error: ' + err;
+                    console.log('Error: ' + err);
+                }
+            });
+
+
+
+
             $("#btnName").on("click", function () {
                 $("#message").text("");
 
