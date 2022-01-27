@@ -1,12 +1,36 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta charset="utf-8" />
+    <title></title>
+
+    <script src="https://kendo.cdn.telerik.com/2018.3.1017/js/jquery.min.js"></script>
 </head>
+
 <body>
-    <h1>Hello New World</h1>
+    <h3> Azure function</h3>
+    <label>Name: </label> <input type="text" id="txtName" />
+    <button id="btnName">Click Me</button>
+    <label id="message" style="color:green"></label>
+    <script>
+        $(document).ready(function () {
+            $("#btnName").on("click", function () {
+                $("#message").text("");
+
+                $.ajax({
+                    type: "GET",
+                    url: "https://initvoting.azurewebsites.net/api/initvoting?id=73WakrfVbNJBaAmhQtEeDv",
+                    data: JSON.stringify({
+                        "name": $("#txtName").val(),
+                    }),
+                    success: function (response) {
+                        $("#message").text(response);
+                    },
+                })
+            });
+        })  
+    </script>
 </body>
+
 </html>
